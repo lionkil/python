@@ -9,6 +9,9 @@ import math
 import numpy as np
 from matplotlib import pyplot as plt
 import scipy.optimize as opt
+import matplotlib.pyplot as pyplt
+
+pyplt.rcParams["figure.figsize"] = (10, 10)
 
 def chisq(M, sig_M, M_exp): #Function to find the Chi^squared value
     chi_2 = np.sum(((M-M_exp)**2.0)/(sig_M**2.0))
@@ -113,7 +116,7 @@ plt.text(-0.05,-4.7,np.round(opt_chi2_shifted/df,4),color='red',fontsize=10)
 for i in range(10):
     c=period_log_shifted[i]+0.01
     d=M[i]
-    plt.annotate(s=star[i],xy=(c,d),fontsize=9)
+    plt.annotate(star[i],xy=(c,d),fontsize=9)
 
 plt.gca().invert_yaxis() #inverting the y-axis to make it look nicer
 plt.show()
@@ -325,8 +328,8 @@ tot_err_dmod=(5*logd_err)
 x=np.arange(0,24.0,3.0)#Made the steps bigger so the names of the galaxies would be more visible
 plt.clf()
 for i in range(8):
-    plt.annotate(xy=(x[i],distance_modulus[i]),s='{}'.format(galaxy[i]),fontsize=9)
-    plt.annotate(xy=(x[i],distance_modulus[i]-0.2),s='{}'.format(i+1),fontsize=9)#Plotting each correspoding galaxy number
+    plt.annotate('{}'.format(galaxy[i]),xy=(x[i],distance_modulus[i]),fontsize=9)
+    plt.annotate('{}'.format(i+1),xy=(x[i],distance_modulus[i]-0.2),fontsize=9)#Plotting each correspoding galaxy number
 plt.scatter(x,distance_modulus)#Plotting the distane modulii against arbitrary numbers to visually see them
 plt.title('Distances of galaxies')
 plt.xlabel('Arbitrary units')
@@ -418,7 +421,7 @@ plt.errorbar(list_d,rvel, xerr=error_D, yerr=err_rvel, ls='none')
 for i in range(8): #Plotting galaxy number
     c=list_d[i]
     d=rvel[i]
-    plt.annotate(xy=(c,d),s='{}'.format(i+1),fontsize=15)
+    plt.annotate('{}'.format(i+1),xy=(c,d),fontsize=15)
 plt.scatter(list_d,rvel,marker='x',color='black')
 plt.xlabel('Distance From Galaxy(Mpc)')
 plt.ylabel('Recession Velocity (km/s)')
