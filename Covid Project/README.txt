@@ -1,4 +1,4 @@
-Run this line in the console
+Run this line in the console so the animation pops out
 %matplotlib qt
 
 - Red represents patient zero, who can only infect non-infected individuals.  
